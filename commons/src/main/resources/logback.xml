@@ -2,7 +2,7 @@
 <configuration>
     <contextName>${APP_NAME}</contextName>
 
-    <contextListener class="demo.logging.LoggerStartupListener"/>
+    <contextListener class="com.github.lavenderx.demo.logging.LoggerStartupListener"/>
     <!-- Stop logback status info at the start of every log -->
     <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
 

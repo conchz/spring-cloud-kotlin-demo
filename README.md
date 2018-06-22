@@ -1,1 +1,1 @@
-# spring-boot-kotlin-demo
+# spring-cloud-kotlin-demo
