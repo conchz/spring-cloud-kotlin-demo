@@ -1,11 +1,19 @@
-// https://spring.io/guides/tutorials/spring-boot-kotlin/
+apply from: "config.gradle"
+
+group rootProject.ext.app.group
+version rootProject.ext.app.version
+
 buildscript {
     ext {
-        kotlinVersion = '1.2.50'
-        springBootVersion = '2.0.3.RELEASE'
+        kotlinVersion = '1.2.51'
+        springVersion = '4.3.18.RELEASE'
+        springBootVersion = '1.5.14.RELEASE'
+        springCloudVersion = 'Edgware.SR4'  // Finchley.RELEASE
     }
     repositories {
+        jcenter()
         mavenCentral()
+        maven { url "https://repo.spring.io/plugins-release" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -14,66 +22,79 @@ buildscript {
     }
 }
 
-apply plugin: 'kotlin'
-apply plugin: 'kotlin-spring'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+allprojects {
+    apply plugin: 'idea'
+}
 
-group = 'com.github.lavenderx'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'kotlin'  // https://spring.io/guides/tutorials/spring-boot-kotlin/
+    apply plugin: 'kotlin-spring'
+    apply plugin: 'io.spring.dependency-management'
 
-compileKotlin {
-    kotlinOptions {
-        freeCompilerArgs = ["-Xjsr305=strict"]
-        jvmTarget = "1.8"
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    compileKotlin {
+        kotlinOptions {
+            freeCompilerArgs = ["-Xjsr305=strict"]
+            jvmTarget = "1.8"
+        }
     }
-}
-compileTestKotlin {
-    kotlinOptions {
-        freeCompilerArgs = ["-Xjsr305=strict"]
-        jvmTarget = "1.8"
+    compileTestKotlin {
+        kotlinOptions {
+            freeCompilerArgs = ["-Xjsr305=strict"]
+            jvmTarget = "1.8"
+        }
     }
-}
 
-configurations {
-    compile.exclude group: 'org.apache.tomcat', module: 'tomcat-jdbc'
-    compile.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
-}
+    configurations {
+        compile.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+        compile.exclude group: 'org.slf4j', module: 'log4j-over-slf4j'
+        compile.exclude group: 'com.google.code.gson', module: 'gson'
+        compile.exclude group: 'com.google.code.findbugs', module: 'jsr305'
+        compile.exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
+        compile.exclude group: 'com.google.j2objc', module: 'j2objc-annotations'
+        compile.exclude group: 'com.google.instrumentation', module: 'instrumentation-api'
 
-repositories {
-    mavenLocal()
-    maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
-    mavenCentral()
-}
+        provided
+    }
 
+    sourceSets {
+        main.compileClasspath += configurations.provided
+        test.compileClasspath += configurations.provided
+    }
 
-ext {
-    springCloudVersion = 'Finchley.RELEASE'
-}
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://10.8.10.24:8081/nexus/content/groups/public/' }
+    }
 
-dependencies {
-    compile('org.springframework.boot:spring-boot-starter-data-redis')
-    compile('org.springframework.boot:spring-boot-starter-security')
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.boot:spring-boot-starter-undertow')
-    compile('com.fasterxml.jackson.module:jackson-module-kotlin')
-    compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
-    compile('org.springframework.cloud:spring-cloud-starter-security')
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    compile("org.jetbrains.kotlin:kotlin-reflect")
-    compile('com.google.guava:guava:23.0')
-    runtime('mysql:mysql-connector-java')
-    compileOnly('org.projectlombok:lombok')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('org.springframework.security:spring-security-test')
-}
+    // https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html
+    // https://docs.gradle.org/current/userguide/dependency_management.html
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
+            mavenBom "org.springframework.boot:spring-boot-starter-parent:$springBootVersion"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    dependencies {
+        compile rootProject.ext.dependencies['kotlin-stdlib-jdk8'],
+                rootProject.ext.dependencies['kotlin-reflect']
+
+        compile('com.google.guava:guava:23.0') {
+            force = true
+        }
+
+        compileOnly rootProject.ext.dependencies['lombok']
+
+        provided rootProject.ext.dependencies['javax-servlet-api']
+
+        testCompile rootProject.ext.dependencies['junit']
     }
 }
 

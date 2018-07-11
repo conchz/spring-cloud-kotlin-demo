@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <contextName>${APP_NAME}</contextName>
 
+<!-- http://tengj.top/2017/04/05/springboot7/ -->
+
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/default.xml"/>
+
+    <contextName>${APP_NAME}</contextName>
     <contextListener class="com.github.lavenderx.demo.logging.LoggerStartupListener"/>
     <!-- Stop logback status info at the start of every log -->
-    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>b
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">

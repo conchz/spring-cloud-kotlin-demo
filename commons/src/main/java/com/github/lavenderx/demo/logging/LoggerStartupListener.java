@@ -8,9 +8,6 @@ import ch.qos.logback.core.Context;
 import ch.qos.logback.core.spi.ContextAwareBase;
 import ch.qos.logback.core.spi.LifeCycle;
 
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-
 public class LoggerStartupListener extends ContextAwareBase implements LoggerContextListener, LifeCycle {
 
     private static final String DEFAULT_APP_NAME = "spring-cloud-kotlin-demo";
@@ -25,15 +22,15 @@ public class LoggerStartupListener extends ContextAwareBase implements LoggerCon
         }
 
         String appName = System.getProperty("app.name");
-        if(appName == null || appName.isEmpty()){
-            appName = UUID.randomUUID().toString().replace("-", "");
+        if (appName == null || appName.isEmpty()) {
+            appName = DEFAULT_APP_NAME;
         }
         String logDir = System.getProperty("app.logger.dir");
-        if (logDir == null || appName.isEmpty()) {
+        if (logDir == null || logDir.isEmpty()) {
             logDir = System.getProperty("user.home") + System.getProperty("file.separator") + appName;
         }
         String logLevel = System.getProperty("app.logger.level");
-        if (logLevel == null || appName.isEmpty()) {
+        if (logLevel == null || logLevel.isEmpty()) {
             logLevel = DEFAULT_LOG_LEVEL;
         }
 

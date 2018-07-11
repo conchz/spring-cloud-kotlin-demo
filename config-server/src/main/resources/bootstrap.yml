@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+     server:
+       default-application-name: config-server
+       git:
+         uri: https://github.com/lavenderx/spring-cloud-kotlin-demo/config-server
+         search-paths: /
+     label: master
+
+server:
+  port: 7000
