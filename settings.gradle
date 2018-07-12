@@ -5,3 +5,5 @@ include 'core'
 include 'eureka-server'
 include 'config-server'
 include 'gateway'
+include 'consul'
+

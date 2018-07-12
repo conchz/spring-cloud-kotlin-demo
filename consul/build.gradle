@@ -1,0 +1,7 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile project(':commons'),
+            rootProject.ext.dependencies['spring-boot-starter-undertow'],
+            rootProject.ext.dependencies['spring-cloud-starter-consul-all']
+}

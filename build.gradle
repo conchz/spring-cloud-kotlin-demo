@@ -9,6 +9,7 @@ buildscript {
         springVersion = '4.3.18.RELEASE'
         springBootVersion = '1.5.14.RELEASE'
         springCloudVersion = 'Edgware.SR4'  // Finchley.RELEASE
+        springCloudConsulVersion = '1.3.4.RELEASE'
     }
     repositories {
         jcenter()
@@ -51,7 +52,6 @@ subprojects {
     configurations {
         compile.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
         compile.exclude group: 'org.slf4j', module: 'log4j-over-slf4j'
-        compile.exclude group: 'com.google.code.gson', module: 'gson'
         compile.exclude group: 'com.google.code.findbugs', module: 'jsr305'
         compile.exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
         compile.exclude group: 'com.google.j2objc', module: 'j2objc-annotations'
@@ -69,7 +69,6 @@ subprojects {
         mavenLocal()
         mavenCentral()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'http://10.8.10.24:8081/nexus/content/groups/public/' }
     }
 
     // https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html
@@ -79,6 +78,7 @@ subprojects {
             mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
             mavenBom "org.springframework.boot:spring-boot-starter-parent:$springBootVersion"
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "org.springframework.cloud:spring-cloud-consul-dependencies:${springCloudConsulVersion}"
         }
     }
 
