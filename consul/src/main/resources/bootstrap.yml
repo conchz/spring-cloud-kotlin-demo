@@ -1,10 +1,13 @@
 spring:
   application:
-    name: consul-client
+    name: consul-server
   cloud:
     consul:
       host: 127.0.0.1
       port: 8500
       discovery:
-        healthCheckPath: /
+        healthCheckPath: /health
         healthCheckInterval: 5s
+
+server:
+  port: 8501
