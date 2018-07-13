@@ -1,5 +1,6 @@
 dependencies {
     compile rootProject.ext.dependencies['logback-classic'],
+            rootProject.ext.dependencies['hibernate-validator'],
             rootProject.ext.dependencies['jackson-module-kotlin'],
             rootProject.ext.dependencies['java-jwt'],
             rootProject.ext.dependencies['spring-core'],

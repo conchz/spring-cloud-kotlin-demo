@@ -45,6 +45,7 @@ ext {
             "mybatis-plus-boot-starter"      : "com.baomidou:mybatis-plus-boot-starter:2.3",
             "pagehelper-spring-boot-starter" : "com.github.pagehelper:pagehelper-spring-boot-starter:1.2.5",
 
+            "hibernate-validator"            : "org.hibernate:hibernate-validator:6.0.10.Final",
             "jackson-databind"               : "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
             "jackson-annotations"            : "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion",
             "jackson-datatype-jsr310"        : "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion",
