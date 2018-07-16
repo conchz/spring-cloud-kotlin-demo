@@ -5,61 +5,62 @@ ext {
     lombokVersion = "1.16.22"
 
     app = [
-            group  : "com.github.lavenderx",
-            version: "0.0.1-SNAPSHOT"
+        group  : "com.github.lavenderx",
+        version: "0.0.1-SNAPSHOT"
     ]
 
     dependencies = [
-            "kotlin-stdlib-jdk8"             : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
-            "kotlin-reflect"                 : "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion",
+        "kotlin-stdlib-jdk8"             : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+        "kotlin-reflect"                 : "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion",
 
-            "spring-core"                    : "org.springframework:spring-core:$springVersion",
-            "spring-beans"                   : "org.springframework:spring-beans:$springVersion",
-            "spring-context"                 : "org.springframework:spring-context:$springVersion",
+        "spring-core"                    : "org.springframework:spring-core:$springVersion",
+        "spring-beans"                   : "org.springframework:spring-beans:$springVersion",
+        "spring-context"                 : "org.springframework:spring-context:$springVersion",
 
-            "spring-boot-starter-web"        : "org.springframework.boot:spring-boot-starter-web:$springBootVersion",
-            "spring-boot-starter-undertow"   : "org.springframework.boot:spring-boot-starter-undertow:$springBootVersion",
-            "spring-boot-starter-actuator"   : "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion",
-            "spring-boot-starter-security"   : "org.springframework.boot:spring-boot-starter-security:$springBootVersion",
-            "spring-boot-starter-data-redis" : "org.springframework.boot:spring-boot-starter-data-redis:$springBootVersion",
-            "grpc-server-spring-boot-starter": "net.devh:grpc-server-spring-boot-starter:$grpc4SpringBootVersion",
-            "grpc-client-spring-boot-starter": "net.devh:grpc-client-spring-boot-starter:$grpc4SpringBootVersion",
+        "spring-boot-starter-web"        : "org.springframework.boot:spring-boot-starter-web:$springBootVersion",
+        "spring-boot-starter-undertow"   : "org.springframework.boot:spring-boot-starter-undertow:$springBootVersion",
+        "spring-boot-starter-actuator"   : "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion",
+        "spring-boot-starter-security"   : "org.springframework.boot:spring-boot-starter-security:$springBootVersion",
+        "spring-boot-starter-data-redis" : "org.springframework.boot:spring-boot-starter-data-redis:$springBootVersion",
+        "grpc-server-spring-boot-starter": "net.devh:grpc-server-spring-boot-starter:$grpc4SpringBootVersion",
+        "grpc-client-spring-boot-starter": "net.devh:grpc-client-spring-boot-starter:$grpc4SpringBootVersion",
 
-            "spring-cloud-starter-config"    : "org.springframework.cloud:spring-cloud-starter-config",
-            "spring-cloud-config-server"     : "org.springframework.cloud:spring-cloud-config-server",
-            "spring-cloud-starter-netflix-eureka-server"
-                                             : "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server",
-            "spring-cloud-starter-netflix-eureka-client"
-                                             : "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client",
-            "spring-cloud-starter-netflix-hystrix"
-                                             : "org.springframework.cloud:spring-cloud-starter-netflix-hystrix",
-            "spring-cloud-starter-netflix-ribbon"
-                                             : "org.springframework.cloud:spring-cloud-starter-netflix-ribbon",
-            "spring-cloud-starter-netflix-zuul"
-                                             : "org.springframework.cloud:spring-cloud-starter-netflix-zuul",
-            "spring-cloud-starter-feign"     : "org.springframework.cloud:spring-cloud-starter-feign",
-            "spring-cloud-starter-consul-all": "org.springframework.cloud:spring-cloud-starter-consul-all:1.3.4.RELEASE",
-            "spring-cloud-starter-security"  : "org.springframework.cloud:spring-cloud-starter-security:1.2.3.RELEASE",
+        "spring-cloud-starter-config"    : "org.springframework.cloud:spring-cloud-starter-config",
+        "spring-cloud-config-server"     : "org.springframework.cloud:spring-cloud-config-server",
+        "spring-cloud-starter-netflix-eureka-server"
+                                         : "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server",
+        "spring-cloud-starter-netflix-eureka-client"
+                                         : "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client",
+        "spring-cloud-starter-netflix-hystrix"
+                                         : "org.springframework.cloud:spring-cloud-starter-netflix-hystrix",
+        "spring-cloud-starter-netflix-ribbon"
+                                         : "org.springframework.cloud:spring-cloud-starter-netflix-ribbon",
+        "spring-cloud-starter-netflix-zuul"
+                                         : "org.springframework.cloud:spring-cloud-starter-netflix-zuul",
+        "spring-cloud-starter-feign"     : "org.springframework.cloud:spring-cloud-starter-feign",
+        "spring-cloud-starter-consul-all": "org.springframework.cloud:spring-cloud-starter-consul-all:1.3.4.RELEASE",
+        "spring-cloud-starter-security"  : "org.springframework.cloud:spring-cloud-starter-security:1.2.3.RELEASE",
 
-            "mybatis-spring-boot-starter"    : "org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2",
-            "mybatis-plus-boot-starter"      : "com.baomidou:mybatis-plus-boot-starter:2.3",
-            "pagehelper-spring-boot-starter" : "com.github.pagehelper:pagehelper-spring-boot-starter:1.2.5",
+        "mybatis-spring-boot-starter"    : "org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2",
+        "mybatis-plus-boot-starter"      : "com.baomidou:mybatis-plus-boot-starter:2.3",
+        "pagehelper-spring-boot-starter" : "com.github.pagehelper:pagehelper-spring-boot-starter:1.2.5",
 
-            "hibernate-validator"            : "org.hibernate:hibernate-validator:6.0.10.Final",
-            "jackson-databind"               : "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
-            "jackson-annotations"            : "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion",
-            "jackson-datatype-jsr310"        : "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion",
-            "jackson-module-kotlin"          : "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion",
-            "javax-servlet-api"              : "javax.servlet:javax.servlet-api:3.1.0",
-            "lombok"                         : "org.projectlombok:lombok:$lombokVersion",
-            "logback-classic"                : "ch.qos.logback:logback-classic:$logbackVersion",
-            "reflections"                    : "org.reflections:reflections:0.9.11",
-            "java-jwt"                       : "com.auth0:java-jwt:3.4.0",
-            "mysql"                          : "mysql:mysql-connector-java:5.1.46",
-            "postgresql"                     : "org.postgresql:postgresql:42.2.2",
-            "HikariCP"                       : "com.zaxxer:HikariCP:2.7.9",
+        "transmittable-thread-local"     : "com.alibaba:transmittable-thread-local:2.5.1",
+        "hibernate-validator"            : "org.hibernate:hibernate-validator:6.0.10.Final",
+        "jackson-databind"               : "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+        "jackson-annotations"            : "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion",
+        "jackson-datatype-jsr310"        : "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion",
+        "jackson-module-kotlin"          : "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion",
+        "javax-servlet-api"              : "javax.servlet:javax.servlet-api:3.1.0",
+        "lombok"                         : "org.projectlombok:lombok:$lombokVersion",
+        "logback-classic"                : "ch.qos.logback:logback-classic:$logbackVersion",
+        "reflections"                    : "org.reflections:reflections:0.9.11",
+        "java-jwt"                       : "com.auth0:java-jwt:3.4.0",
+        "mysql"                          : "mysql:mysql-connector-java:5.1.46",
+        "postgresql"                     : "org.postgresql:postgresql:42.2.2",
+        "HikariCP"                       : "com.zaxxer:HikariCP:2.7.9",
 
-            "junit"                          : "junit:junit:4.12",
-            "spring-boot-starter-test"       : "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+        "junit"                          : "junit:junit:4.12",
+        "spring-boot-starter-test"       : "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
     ]
 }
