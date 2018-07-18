@@ -7,7 +7,7 @@ server:
 
 eureka:
   instance:
-    hostname: 10.8.10.24
+    hostname: localhost
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 30
