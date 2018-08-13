@@ -7,7 +7,7 @@ buildscript {
     ext {
         kotlinVersion = '1.2.51'
         springVersion = '4.3.18.RELEASE'
-        springBootVersion = '1.5.14.RELEASE'
+        springBootVersion = '1.5.15.RELEASE'
         springCloudVersion = 'Edgware.SR4'  // Finchley.RELEASE
         springCloudConsulVersion = '1.3.4.RELEASE'
     }

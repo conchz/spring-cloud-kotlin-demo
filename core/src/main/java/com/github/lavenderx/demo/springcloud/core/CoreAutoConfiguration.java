@@ -4,6 +4,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.ribbon.DefaultPropertiesFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -21,7 +22,10 @@ public class CoreAutoConfiguration extends WebMvcConfigurerAdapter {
     @LoadBalanced
     @Bean
     public RestTemplate restTemplate() {
-        RestTemplate restTemplate = new RestTemplate();
+        SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
+        simpleClientHttpRequestFactory.setConnectTimeout(3000);
+        simpleClientHttpRequestFactory.setReadTimeout(3000);
+        RestTemplate restTemplate = new RestTemplate(simpleClientHttpRequestFactory);
         restTemplate.getInterceptors().add(new CoreHttpRequestInterceptor());
         return restTemplate;
     }

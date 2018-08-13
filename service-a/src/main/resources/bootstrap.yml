@@ -1,9 +1,9 @@
 spring:
   application:
-    name: api-gateway
+    name: servicea-v1
 
 server:
-  port: 18080
+  port: 7001
 
 eureka:
   instance:
@@ -16,18 +16,3 @@ eureka:
     registry-fetch-interval-seconds: 5
     service-url:
       defaultZone: http://localhost:8761/eureka/
-
-zuul:
-  host:
-    socket-timeout-millis: 30000
-    connect-timeout-millis: 30000
-  routes:
-    api-aggregator:
-      path: /**
-      serviceId: api-aggregator
-
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 30000
-
-ribbon:
-  ReadTimeout: 30000
-  ConnectTimeout: 30000

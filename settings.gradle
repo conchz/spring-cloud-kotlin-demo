@@ -6,4 +6,7 @@ include 'eureka-server'
 include 'config-server'
 include 'gateway'
 include 'consul'
+include 'aggregator'
+include 'service-a'
+include 'service-b'
 

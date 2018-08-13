@@ -1,0 +1,9 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile project(':core'),
+            rootProject.ext.dependencies['spring-boot-starter-undertow'],
+            rootProject.ext.dependencies['spring-cloud-starter-netflix-zuul'],
+            rootProject.ext.dependencies['spring-cloud-starter-netflix-hystrix'],
+            rootProject.ext.dependencies['spring-cloud-starter-feign']
+}
