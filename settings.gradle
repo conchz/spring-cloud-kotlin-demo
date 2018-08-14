@@ -9,5 +9,5 @@ include 'consul'
 include 'aggregator'
 include 'service-a'
 include 'service-b'
-include 'authority-service'
+include 'uaa'
 

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: authority-service
+    name: uaa
 
 server:
   port: 7000

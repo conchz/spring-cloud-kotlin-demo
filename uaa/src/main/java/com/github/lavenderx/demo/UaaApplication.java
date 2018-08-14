@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 
 @SpringCloudApplication
-public class AuthorityApplication {
+public class UaaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AuthorityApplication.class, args);
+        SpringApplication.run(UaaApplication.class, args);
     }
 }
