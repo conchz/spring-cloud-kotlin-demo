@@ -41,8 +41,7 @@ public class AggregationService {
     @HystrixCommand(fallbackMethod = "fallback")
     public Observable<User> getUserbById(Long id) {
         return Observable.create(observer -> {
-//            User userb = servicebFeignClient.queryUserInfo(id);
-            User userb = restTemplate.getForObject("http://serviceb-v1/user/{1}", User.class, id);
+            User userb = servicebFeignClient.queryUserInfo(id);
             observer.onNext(userb);
             observer.onCompleted();
         });

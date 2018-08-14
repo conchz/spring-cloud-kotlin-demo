@@ -20,6 +20,8 @@ eureka:
 zuul:
   prefix: /api
 
+# https://deanwangpro.com/2018/04/13/zuul-hytrix-ribbon-timeout/
+
 feign:
   client:
     config:
@@ -27,7 +29,7 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
 
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 10000
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
 
 ribbon:
   ReadTimeout: 10000

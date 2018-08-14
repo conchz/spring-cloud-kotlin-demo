@@ -2,22 +2,20 @@ package com.github.lavenderx.demo.controller;
 
 import com.github.lavenderx.demo.client.ServiceaFeignClient;
 import com.github.lavenderx.demo.model.User;
+import com.github.lavenderx.demo.protocol.response.BaseResponse;
 import com.github.lavenderx.demo.service.AggregationService;
 import com.google.common.collect.Maps;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 import rx.Observable;
-import rx.Observer;
 
 import java.util.HashMap;
 
-@Slf4j
 @RestController
-public class AggregationController {
+public class AggregationController extends BaseController {
 
     private final ServiceaFeignClient serviceaFeignClient;
     private final AggregationService aggregationService;
@@ -35,45 +33,29 @@ public class AggregationController {
     }
 
     @GetMapping("/api/v1/aggs/aggregate/{id}")
-    public DeferredResult<HashMap<String, User>> aggregate(@PathVariable Long id) {
-        Observable<HashMap<String, User>> result = this.aggregateObservable(id);
-        return this.toDeferredResult(result);
+    public DeferredResult<BaseResponse> aggregate(@PathVariable Long id) {
+        Observable<BaseResponse> result = aggregateObservable(id);
+        return toDeferredResult(result);
     }
 
-    public Observable<HashMap<String, User>> aggregateObservable(Long id) {
+    public Observable<BaseResponse> aggregateObservable(Long id) {
         // 合并两个或者多个Observables发射出的数据项，根据指定的函数变换它们
         return Observable.zip(
                 this.aggregationService.getUseraById(id),
                 this.aggregationService.getUserbById(id),
-                (user, movieUser) -> {
+                (usera, userb) -> {
+                    BaseResponse<HashMap<String, User>> response = new BaseResponse<>();
                     HashMap<String, User> map = Maps.newHashMap();
-                    map.put("usera", user);
-                    map.put("userb", movieUser);
-                    return map;
+                    map.put("usera", usera);
+                    map.put("userb", userb);
+
+                    response.setCode(1);
+                    response.setMessage("OK");
+                    response.setData(map);
+
+                    return response;
                 }
         );
-    }
-
-    public DeferredResult<HashMap<String, User>> toDeferredResult(Observable<HashMap<String, User>> details) {
-        DeferredResult<HashMap<String, User>> result = new DeferredResult<>();
-        // 订阅
-        details.subscribe(new Observer<HashMap<String, User>>() {
-            @Override
-            public void onCompleted() {
-                log.info("完成...");
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-                log.error("发生错误...", throwable);
-            }
-
-            @Override
-            public void onNext(HashMap<String, User> movieDetails) {
-                result.setResult(movieDetails);
-            }
-        });
-        return result;
     }
 
 }
