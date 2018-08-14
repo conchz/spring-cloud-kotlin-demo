@@ -1,6 +1,5 @@
 package com.github.lavenderx.demo.controller;
 
-import com.github.lavenderx.demo.client.ServiceaFeignClient;
 import com.github.lavenderx.demo.model.User;
 import com.github.lavenderx.demo.protocol.response.BaseResponse;
 import com.github.lavenderx.demo.service.AggregationService;
@@ -17,22 +16,14 @@ import java.util.HashMap;
 @RestController
 public class AggregationController extends BaseController {
 
-    private final ServiceaFeignClient serviceaFeignClient;
     private final AggregationService aggregationService;
 
     @Autowired
-    public AggregationController(ServiceaFeignClient serviceaFeignClient,
-                                 AggregationService aggregationService) {
-        this.serviceaFeignClient = serviceaFeignClient;
+    public AggregationController(AggregationService aggregationService) {
         this.aggregationService = aggregationService;
     }
 
-    @GetMapping("/api/v1/servicea/user/1")
-    public User testServicea(@PathVariable("id") Long id) {
-        return serviceaFeignClient.queryUserInfo(id);
-    }
-
-    @GetMapping("/api/v1/aggs/aggregate/{id}")
+    @GetMapping("/api/v1/aggs/user/{id}")
     public DeferredResult<BaseResponse> aggregate(@PathVariable Long id) {
         Observable<BaseResponse> result = aggregateObservable(id);
         return toDeferredResult(result);
@@ -57,5 +48,4 @@ public class AggregationController extends BaseController {
                 }
         );
     }
-
 }

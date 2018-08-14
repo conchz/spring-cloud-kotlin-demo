@@ -6,8 +6,8 @@ version rootProject.ext.app.version
 buildscript {
     ext {
         kotlinVersion = '1.2.51'
-        springVersion = '4.3.18.RELEASE'
-        springBootVersion = '1.5.15.RELEASE'
+        springVersion = '4.3.16.RELEASE'
+        springBootVersion = '1.5.12.RELEASE'
         springCloudVersion = 'Edgware.SR4'  // Finchley.RELEASE
         springCloudConsulVersion = '1.3.4.RELEASE'
     }
@@ -67,8 +67,8 @@ subprojects {
 
     repositories {
         mavenLocal()
-        mavenCentral()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
     }
 
     // https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html
@@ -86,7 +86,7 @@ subprojects {
         compile rootProject.ext.dependencies['kotlin-stdlib-jdk8'],
                 rootProject.ext.dependencies['kotlin-reflect']
 
-        compile('com.google.guava:guava:23.0') {
+        compile('com.google.guava:guava:20.0') {
             force = true
         }
 

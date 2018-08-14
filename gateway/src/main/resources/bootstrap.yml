@@ -26,8 +26,16 @@ zuul:
       path: /**
       serviceId: api-aggregator
 
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+hystrix:
+  command:
+#    default:
+    api-aggregator:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
 
-ribbon:
-  ReadTimeout: 10000
-  ConnectTimeout: 10000
+api-aggregator:
+  ribbon:
+    ReadTimeout: 10000
+    ConnectTimeout: 10000

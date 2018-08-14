@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "serviceb-v1")
-public interface ServicebFeignClient {
+@FeignClient(name = "${client.servicea}", path = "user")
+public interface UseraFeignClient {
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
     User queryUserInfo(@PathVariable("id") Long id);
 }

@@ -1,7 +1,7 @@
 package com.github.lavenderx.demo.service;
 
-import com.github.lavenderx.demo.client.ServiceaFeignClient;
-import com.github.lavenderx.demo.client.ServicebFeignClient;
+import com.github.lavenderx.demo.client.UseraFeignClient;
+import com.github.lavenderx.demo.client.UserbFeignClient;
 import com.github.lavenderx.demo.model.User;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
@@ -15,23 +15,23 @@ import rx.Observable;
 public class AggregationService {
 
     private final RestTemplate restTemplate;
-    private final ServiceaFeignClient serviceaFeignClient;
-    private final ServicebFeignClient servicebFeignClient;
+    private final UseraFeignClient useraFeignClient;
+    private final UserbFeignClient userbFeignClient;
 
     @Autowired
     public AggregationService(RestTemplate restTemplate,
-                              ServiceaFeignClient serviceaFeignClient,
-                              ServicebFeignClient servicebFeignClient) {
+                              UseraFeignClient useraFeignClient,
+                              UserbFeignClient userbFeignClient) {
         this.restTemplate = restTemplate;
-        this.serviceaFeignClient = serviceaFeignClient;
-        this.servicebFeignClient = servicebFeignClient;
+        this.useraFeignClient = useraFeignClient;
+        this.userbFeignClient = userbFeignClient;
     }
 
     @HystrixCommand(fallbackMethod = "fallback")
     public Observable<User> getUseraById(Long id) {
         // 创建一个被观察者
         return Observable.create(observer -> {
-            User usera = serviceaFeignClient.queryUserInfo(id);
+            User usera = useraFeignClient.queryUserInfo(id);
 //            User usera = restTemplate.getForObject("http://servicea-v1/user/{1}", User.class, id);
             observer.onNext(usera);
             observer.onCompleted();
@@ -41,7 +41,7 @@ public class AggregationService {
     @HystrixCommand(fallbackMethod = "fallback")
     public Observable<User> getUserbById(Long id) {
         return Observable.create(observer -> {
-            User userb = servicebFeignClient.queryUserInfo(id);
+            User userb = userbFeignClient.queryUserInfo(id);
             observer.onNext(userb);
             observer.onCompleted();
         });
