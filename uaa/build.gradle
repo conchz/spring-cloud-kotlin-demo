@@ -5,5 +5,9 @@ dependencies {
             rootProject.ext.dependencies['spring-boot-starter-undertow'],
             rootProject.ext.dependencies['spring-cloud-starter-netflix-hystrix'],
             rootProject.ext.dependencies['spring-cloud-starter-oauth2'],
-            rootProject.ext.dependencies['spring-security-data']
+            rootProject.ext.dependencies['spring-security-data'],
+            rootProject.ext.dependencies['spring-security-jwt'],
+            rootProject.ext.dependencies['mysql'],
+            rootProject.ext.dependencies['spring-boot-starter-data-jpa'],
+            rootProject.ext.dependencies['hibernate-validator']
 }
