@@ -20,6 +20,7 @@ ext {
         "spring-security-jwt"            : "org.springframework.security:spring-security-jwt",
 
         "spring-boot-starter-web"        : "org.springframework.boot:spring-boot-starter-web:$springBootVersion",
+        "spring-boot-starter-jetty"      : "org.springframework.boot:spring-boot-starter-jetty:$springBootVersion",
         "spring-boot-starter-undertow"   : "org.springframework.boot:spring-boot-starter-undertow:$springBootVersion",
         "spring-boot-starter-actuator"   : "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion",
         "spring-boot-starter-security"   : "org.springframework.boot:spring-boot-starter-security:$springBootVersion",

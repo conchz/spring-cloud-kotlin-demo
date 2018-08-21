@@ -14,7 +14,7 @@ import rx.Observable;
 import java.util.HashMap;
 
 @RestController
-public class AggregationController extends BaseController {
+public class AggregationController extends BaseAggsController {
 
     private final AggregationService aggregationService;
 

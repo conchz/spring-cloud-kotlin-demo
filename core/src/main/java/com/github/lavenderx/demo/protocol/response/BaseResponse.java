@@ -11,8 +11,6 @@ public class BaseResponse<T> {
     private Integer code;
     @JsonProperty("msg")
     private String message;
-    @JsonProperty("req_id")
-    private Long requestId;
     @JsonProperty("data")
     private T data;
 

@@ -7,16 +7,16 @@ import org.springframework.web.context.request.async.DeferredResult;
 import rx.Observable;
 import rx.Observer;
 
-public abstract class BaseController {
+public abstract class BaseAggsController {
 
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
-    protected DeferredResult<BaseResponse> toDeferredResult(Observable<BaseResponse> observableResponse) {
+    protected DeferredResult<BaseResponse> toDeferredResult(Observable<BaseResponse> obr) {
         final DeferredResult<BaseResponse> result = new DeferredResult<>();
-        observableResponse.subscribe(new Observer<BaseResponse>() {
+        obr.subscribe(new Observer<BaseResponse>() {
             @Override
             public void onCompleted() {
-                log.info("DeferredResult finished");
+
             }
 
             @Override
@@ -25,8 +25,8 @@ public abstract class BaseController {
             }
 
             @Override
-            public void onNext(BaseResponse o) {
-                result.setResult(o);
+            public void onNext(BaseResponse br) {
+                result.setResult(br);
             }
         });
 
