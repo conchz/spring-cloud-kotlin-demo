@@ -21,8 +21,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * Spring Cloud Zuul的fallback优化: http://blog.didispace.com/spring-cloud-zuul-fallback-improve/
  * <p>
  * Zuul工作原理：https://blog.wangqi.love/articles/Spring-Cloud/Zuul%E6%8E%A2%E7%A9%B6(%E4%BA%8C)%E2%80%94%E2%80%94Zuul%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.html
+ * <p>
+ * 使用 Zuul 实现 API Gateway 的路由和过滤：https://www.jianshu.com/p/e0434a421c03
  *
  * @see org.springframework.cloud.netflix.zuul.filters.route.support.AbstractRibbonCommand
+ * @see org.springframework.cloud.netflix.zuul.ZuulServerAutoConfiguration
  * @see com.netflix.client.config.DefaultClientConfigImpl
  * @see com.netflix.hystrix.HystrixCommand
  * @see com.netflix.zuul.http.ZuulServlet
