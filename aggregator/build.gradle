@@ -5,5 +5,8 @@ dependencies {
             rootProject.ext.dependencies['spring-boot-starter-jetty'],
             rootProject.ext.dependencies['spring-cloud-starter-netflix-zuul'],
             rootProject.ext.dependencies['spring-cloud-starter-netflix-hystrix'],
-            rootProject.ext.dependencies['spring-cloud-starter-feign']
+            rootProject.ext.dependencies['spring-cloud-starter-feign'],
+            rootProject.ext.dependencies['prometheus-simpleclient'],
+            rootProject.ext.dependencies['prometheus-simpleclient-hotspot'],
+            rootProject.ext.dependencies['prometheus-simpleclient-spring-boot']
 }

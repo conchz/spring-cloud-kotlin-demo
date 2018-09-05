@@ -3,6 +3,7 @@ ext {
     logbackVersion = "1.1.11"
     jacksonVersion = "2.9.6"
     lombokVersion = "1.16.22"
+    prometheusVersion = "0.5.0"
 
     app = [
         group  : "com.github.lavenderx",
@@ -61,6 +62,10 @@ ext {
         "metrics-jvm"                    : "io.dropwizard.metrics:metrics-jvm",
         "metrics-servlet"                : "io.dropwizard.metrics:metrics-servlet",
         "metrics-servlets"               : "io.dropwizard.metrics:metrics-servlets",
+        "prometheus-simpleclient"        : "io.prometheus:simpleclient:$prometheusVersion",
+        "prometheus-simpleclient-hotspot": "io.prometheus:simpleclient_hotspot:$prometheusVersion",
+        "prometheus-simpleclient-spring-boot"
+                                         : "io.prometheus:simpleclient_spring_boot:$prometheusVersion",
         "jackson-module-kotlin"          : "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion",
         "javax-servlet-api"              : "javax.servlet:javax.servlet-api:3.1.0",
         "lombok"                         : "org.projectlombok:lombok:$lombokVersion",

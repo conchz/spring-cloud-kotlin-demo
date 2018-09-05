@@ -45,3 +45,13 @@ ribbon:
 client:
   servicea: servicea-v1
   serviceb: serviceb-v1
+
+endpoints:
+  metrics:
+    id: aggsmetrics
+    sensitive: false
+    enabled: true
+
+management:
+  security:
+    enabled: false

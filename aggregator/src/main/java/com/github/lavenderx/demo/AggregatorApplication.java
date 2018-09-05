@@ -1,9 +1,11 @@
 package com.github.lavenderx.demo;
 
+import io.prometheus.client.hotspot.DefaultExports;
+import io.prometheus.client.spring.boot.EnablePrometheusEndpoint;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * 使用Zuul构建微服务网关-路由端点与路由配置详解: http://blog.51cto.com/1754966750/1958422
@@ -23,6 +25,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * Zuul工作原理：https://blog.wangqi.love/articles/Spring-Cloud/Zuul%E6%8E%A2%E7%A9%B6(%E4%BA%8C)%E2%80%94%E2%80%94Zuul%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.html
  * <p>
  * 使用 Zuul 实现 API Gateway 的路由和过滤：https://www.jianshu.com/p/e0434a421c03
+ * <p>
+ * 让Prometheus监控你的应用程序（Spring版）：http://ylzheng.com/2018/01/24/use-prometheus-monitor-your-spring-boot-application/
  *
  * @see org.springframework.cloud.netflix.zuul.filters.route.support.AbstractRibbonCommand
  * @see org.springframework.cloud.netflix.zuul.ZuulServerAutoConfiguration
@@ -32,9 +36,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @SpringCloudApplication
 @EnableFeignClients
-public class AggregatorApplication extends WebMvcConfigurerAdapter {
+@EnablePrometheusEndpoint
+public class AggregatorApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(AggregatorApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        DefaultExports.initialize();
     }
 }
