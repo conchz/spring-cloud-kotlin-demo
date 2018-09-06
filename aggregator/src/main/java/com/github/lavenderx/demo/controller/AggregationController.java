@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 
 @RestController
-public class AggregationController extends BaseAggsController {
+public class AggregationController {
 
     private final AggregationService aggregationService;
 
