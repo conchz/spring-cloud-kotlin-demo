@@ -27,6 +27,8 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
  * 使用 Zuul 实现 API Gateway 的路由和过滤：https://www.jianshu.com/p/e0434a421c03
  * <p>
  * 让Prometheus监控你的应用程序（Spring版）：http://ylzheng.com/2018/01/24/use-prometheus-monitor-your-spring-boot-application/
+ * <p>
+ * 使用Hystrix实现断路器: https://fangjian0423.github.io/2017/02/19/springcloud-hystrix/
  *
  * @see org.springframework.cloud.netflix.zuul.filters.route.support.AbstractRibbonCommand
  * @see org.springframework.cloud.netflix.zuul.ZuulServerAutoConfiguration
